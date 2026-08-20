@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FiDollarSign, FiUsers, FiLogOut, FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { NavLink, useNavigate } from "react-router-dom";
-import {MessageCircle} from "lucide-react";
+import {MessageCircle, Receipt} from "lucide-react";
 
 export default function Sidebar({ setLogoutModal }) {
     const [expanded, setExpanded] = useState(false);
@@ -116,6 +116,22 @@ export default function Sidebar({ setLogoutModal }) {
                         {expanded && (
                             <span className="transition-opacity duration-300 opacity-100">
                                 Chat
+                            </span>
+                        )}
+                    </NavLink>
+                    <NavLink
+                        to="/Invoice"
+                        className={({ isActive }) =>
+                            `flex items-center p-3 rounded-lg font-medium transition-all duration-300 ${isActive
+                                ? "bg-indigo-50 text-indigo-700 border-l-4 border-indigo-600"
+                                : "text-gray-700 hover:bg-gray-100"
+                            } ${expanded ? 'gap-3' : 'justify-center'}`
+                        }
+                    >
+                        <Receipt  className="text-lg flex-shrink-0" />
+                        {expanded && (
+                            <span className="transition-opacity duration-300 opacity-100">
+                                Invoice Generater 
                             </span>
                         )}
                     </NavLink>
